@@ -84,14 +84,14 @@
             </ul>
             <span class="nav-item social-icons">
                 <span class="fa-stack">
-                    <a href="https://www.linkedin.com/company/developer-student-clubs-gmrit/?viewAsMember=true">
+                    <a href="https://www.linkedin.com/company/developer-student-clubs-gmrit/?viewAsMember=true" target="_blank">
                       <i class="fas fa-circle fa-stack-2x fa-linkedin-in"></i>
                         <i class="fab fa-linkedin-in fa-stack-2x"></i>
                     </a>
                 </span>
 
                 <span class="fa-stack">
-                    <a href="https://www.instagram.com/dsc_gmrit/">
+                    <a href="https://www.instagram.com/dsc_gmrit/" target="_blank">
                         <i class="fas fa-circle fa-stack-2x fa-instagram"></i>
                         <i class="fab fa-instagram fa-stack-2x"></i>
                     </a>
@@ -229,7 +229,7 @@
 
                         <span class="social-icons">
                             <span class="fa-stack">
-                                <a href="https://www.linkedin.com/in/chandrasekhara-reddy-tummuru-362449191/">
+                                <a href="https://www.linkedin.com/in/chandrasekhara-reddy-tummuru-362449191/" target="_blank">
                                     <i class="fas fa-circle fa-stack-2x linkedin"></i>
                                     <i class="fab fa-linkedin fa-stack-1x"></i>
                                 </a>
@@ -252,13 +252,13 @@
                         <p class="job-title">DSC-GMRIT Lead</p>
                         <span class="social-icons">
                             <span class="fa-stack">
-                                <a href="https://www.linkedin.com/in/koushik-modekurti-6b0b46150/">
+                                <a href="https://www.linkedin.com/in/koushik-modekurti-6b0b46150/" target="_blank">
                                     <i class="fas fa-circle fa-stack-2x linkedin"></i>
                                     <i class="fab fa-linkedin fa-stack-1x"></i>
                                 </a>
                             </span>
                             <span class="fa-stack">
-                                <a href="https://github.com/Koushik15042000">
+                                <a href="https://github.com/Koushik15042000" target="_blank">
                                     <i class="fas fa-circle fa-stack-2x github"></i>
                                     <i class="fab fa-github fa-stack-1x"></i>
                                 </a>
@@ -276,13 +276,13 @@
                         <p class="job-title">Android Developer</p>
                         <span class="social-icons">
                             <span class="fa-stack">
-                                <a href="https://www.linkedin.com/in/santosh-burada-1171881aa/">
+                                <a href="https://www.linkedin.com/in/santosh-burada-1171881aa/" target="_blank">
                                     <i class="fas fa-circle fa-stack-2x linkedin"></i>
                                     <i class="fab fa-linkedin fa-stack-1x"></i>
                                 </a>
                             </span>
                             <span class="fa-stack">
-                                <a href="https://github.com/santosh-burada">
+                                <a href="https://github.com/santosh-burada" target="_blank">
                                     <i class="fas fa-circle fa-stack-2x github"></i>
                                     <i class="fab fa-github fa-stack-1x"></i>
                                 </a>
@@ -300,13 +300,13 @@
                         <p class="job-title">Android Developer</p>
                         <span class="social-icons">
                             <span class="fa-stack">
-                                <a href="https://www.linkedin.com/in/saikiran-kopparthi-2204a518a/">
+                                <a href="https://www.linkedin.com/in/saikiran-kopparthi-2204a518a/" target="_blank">
                                     <i class="fas fa-circle fa-stack-2x linkedin"></i>
                                     <i class="fab fa-linkedin fa-stack-1x"></i>
                                 </a>
                             </span>
                             <span class="fa-stack">
-                                <a href="https://github.com/saikiran1224">
+                                <a href="https://github.com/saikiran1224" target="_blank">
                                     <i class="fas fa-circle fa-stack-2x github"></i>
                                     <i class="fab fa-github fa-stack-1x"></i>
                                 </a>
@@ -322,7 +322,7 @@
                         <p class="job-title">Full Stack Developer</p>
                         <span class="social-icons">
                             <span class="fa-stack">
-                                <a href="https://www.linkedin.com/in/vankayala-sai-teja-507114152/">
+                                <a href="https://www.linkedin.com/in/vankayala-sai-teja-507114152/"target="_blank">
                                     <i class="fas fa-circle fa-stack-2x linkedin"></i>
                                     <i class="fab fa-linkedin fa-stack-1x"></i>
                                 </a>
@@ -346,13 +346,13 @@
                         <p class="job-title">Web Developer</p>
                         <span class="social-icons">
                             <span class="fa-stack">
-                                <a href="www.linkedin.com/in/vinay-sriram-3692141b6">
+                                <a href="www.linkedin.com/in/vinay-sriram-3692141b6" target="_blank">
                                     <i class="fas fa-circle fa-stack-2x linkedin"></i>
                                     <i class="fab fa-linkedin fa-stack-1x"></i>
                                 </a>
                             </span>
                             <span class="fa-stack">
-                                <a href="https://github.com/vinaysriram01">
+                                <a href="https://github.com/vinaysriram01" target="_blank">
                                     <i class="fas fa-circle fa-stack-2x github"></i>
                                     <i class="fab fa-github fa-stack-1x"></i>
                                 </a>
@@ -369,13 +369,13 @@
                         <p class="job-title">Media & Creatives</p>
                         <span class="social-icons">
                             <span class="fa-stack">
-                                <a href="https://www.linkedin.com/in/juhijasti2414/">
+                                <a href="https://www.linkedin.com/in/juhijasti2414/" target="_blank">
                                     <i class="fas fa-circle fa-stack-2x linkedin"></i>
                                     <i class="fab fa-linkedin fa-stack-1x"></i>
                                 </a>
                             </span>
                             <span class="fa-stack">
-                                <a href="https://github.com/juhijasti-69">
+                                <a href="https://github.com/juhijasti-69" target="_blank"> 
                                     <i class="fas fa-circle fa-stack-2x github"></i>
                                     <i class="fab fa-github fa-stack-1x"></i>
                                 </a>
@@ -391,7 +391,7 @@
                         <p class="job-title">Iot Developer</p>
                         <span class="social-icons">
                             <span class="fa-stack">
-                                <a href="https://www.linkedin.com/in/venkatesh-muvvala-287150177/">
+                                <a href="https://www.linkedin.com/in/venkatesh-muvvala-287150177/" target="_blank">
                                     <i class="fas fa-circle fa-stack-2x linkedin"></i>
                                     <i class="fab fa-linkedin fa-stack-1x"></i>
                                 </a>
@@ -438,7 +438,7 @@
             <div class="row">
                 <div class="col-lg-3">
         <div class="card" style="width:15rem;">
-        <form  data-toggle="validator" data-focus="false" method="POST"  action="registration.php">
+        <form  data-toggle="validator" data-focus="false" method="POST"  action="registration">
   <!-- img class="card-img-top" src="images/tree.jpg" alt="Card image cap" -->
   <?php  
                                           
@@ -456,7 +456,7 @@
     <p class="card-text">Venue: <?php  echo $user['organizing_mode']; ?></p>
     <?php $value=$user['event_id'] ?> 
                         <input type="text" name='event_name' value="<?=$value?>" hidden> 
-                        <a><button class="btn-solid-reg" type="submit">Register Now</button></a>
+                        <a><button class="btn-solid-reg" type="submit" >Register Now</button></a>
    
                         </form>
                         
@@ -498,7 +498,7 @@
 
 4. Do you seek out Opposing points of view?</p>
                         <br>
-                        <a class="btn-solid-reg " href="idea.html">Submit idea!</a>
+                        <a class="btn-solid-reg " href="idea.html" target="_blank">Submit idea!</a>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
   <div class="col-lg-6 float-left">
@@ -542,7 +542,7 @@
         
                         </div>
                     </div>
-                        <a class="btn-solid-reg" href="https://dsc.community.dev/gmr-information-technology/">Join us Now</a>
+                        <a class="btn-solid-reg" href="https://dsc.community.dev/gmr-information-technology/" target="_blank">Join us Now</a>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
@@ -685,7 +685,7 @@
                 <div class="col-md-4">
                     <div class="footer-col">
                         <h4>Explore</h4>
-                        <a href="http://www.gmrit.org/">GMR INSTITUTE OF TECHNOLOGY</a><br>
+                        <a href="http://www.gmrit.org/" target="_blank">GMR INSTITUTE OF TECHNOLOGY</a><br>
                         <a href="#aboutus">About us</a> <br>
                         <a href="#about">Meet the team</a>
                     </div>
@@ -715,13 +715,13 @@
                             </a>
                         </span> -->
                         <span class="fa-stack">
-                            <a href="https://www.instagram.com/dsc_gmrit/">
+                            <a href="https://www.instagram.com/dsc_gmrit/" target="_blank">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fab fa-instagram fa-stack-1x"></i>
                             </a>
                         </span>
                         <span class="fa-stack">
-                            <a href="https://www.linkedin.com/company/developer-student-clubs-gmrit/?viewAsMember=true">
+                            <a href="https://www.linkedin.com/company/developer-student-clubs-gmrit/?viewAsMember=true" target="_blank">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fab fa-linkedin-in fa-stack-1x"></i>
                             </a>
@@ -756,5 +756,57 @@
     <script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
     <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
+
+    <script>
+        
+        $(document).bind("contextmenu",function(e) {
+         e.preventDefault();
+        });
+        
+        $(document).keydown(function(e){
+            if(e.which === 123){
+               return false;
+            }
+        });
+        </script>
+
+<script>
+document.onkeydown = function(e) {
+if(event.keyCode == 123) {
+return false;
+}
+if(e.ctrlKey && e.keyCode == 'E'.charCodeAt(0)){
+return false;
+}
+if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){
+return false;
+}
+if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
+return false;
+}
+if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){
+return false;
+}
+if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)){
+return false;
+}
+if(e.ctrlKey && e.keyCode == 'H'.charCodeAt(0)){
+return false;
+}
+if(e.ctrlKey && e.keyCode == 'A'.charCodeAt(0)){
+return false;
+}
+if(e.ctrlKey && e.keyCode == 'F'.charCodeAt(0)){
+return false;
+}
+if(e.ctrlKey && e.keyCode == 'E'.charCodeAt(0)){
+return false;
+}
+}
+</script>
+
+
+
+
 </body>
 </html>

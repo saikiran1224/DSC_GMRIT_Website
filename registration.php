@@ -9,7 +9,7 @@
     <meta name="author" content="">
 
     <!-- Website Title -->
-    <title>DSC-GMRIT</title>
+    <title>Event Registration | DSC-GMRIT</title>
     
     <!-- Styles -->
     <!--<link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,600,700,700i&amp;subset=latin-ext" rel="stylesheet">-->
@@ -131,7 +131,7 @@
                                 ?> 
                                      
                     <!-- Contact Form -->
-                    <form  data-toggle="validator" data-focus="false" method="POST"  action="event_registration.php">
+                    <form  data-toggle="validator" data-focus="false" method="POST"  action="event_registration">
 <!--                         <div class="form-group">
                             <input type="text" class="form-control-input" id="cname" required>
                             <label class="label-control" for="cname">Event Id</label>
@@ -269,7 +269,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p class="p-small">Copyright © 2020 <a href=""> designed by dscgmrit</a></p>
+                    <p class="p-small">Copyright © 2020 <a href="">Designed by DSC-GMRIT</a></p>
                 </div> <!-- end of col -->
             </div> <!-- enf of row -->
         </div> <!-- end of container -->
@@ -286,7 +286,55 @@
     <script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
     <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
     <script src="js/scripts.js"></script> <!-- Custom scripts -->
-   
+   <script>
+        
+        $(document).bind("contextmenu",function(e) {
+         e.preventDefault();
+        });
+        
+        $(document).keydown(function(e){
+            if(e.which === 123){
+               return false;
+            }
+        });
+        </script>
+
+<script>
+document.onkeydown = function(e) {
+if(event.keyCode == 123) {
+return false;
+}
+if(e.ctrlKey && e.keyCode == 'E'.charCodeAt(0)){
+return false;
+}
+if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){
+return false;
+}
+if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
+return false;
+}
+if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){
+return false;
+}
+if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)){
+return false;
+}
+if(e.ctrlKey && e.keyCode == 'H'.charCodeAt(0)){
+return false;
+}
+if(e.ctrlKey && e.keyCode == 'A'.charCodeAt(0)){
+return false;
+}
+if(e.ctrlKey && e.keyCode == 'F'.charCodeAt(0)){
+return false;
+}
+if(e.ctrlKey && e.keyCode == 'E'.charCodeAt(0)){
+return false;
+}
+}
+</script>
+
+
 
 </body>
 </html>
