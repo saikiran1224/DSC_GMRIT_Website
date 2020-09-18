@@ -67,7 +67,7 @@ $con = getConn();
         <div id="collapseEvents" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
           
-            <a class="collapse-item" href="publish_event.php">Publish Event</a>
+            <a class="collapse-item" href="publish_event.php" target="_blank">Publish Event</a>
             <a class="collapse-item" href="manage_events.php">Manage Events</a>
           </div>
         </div>
