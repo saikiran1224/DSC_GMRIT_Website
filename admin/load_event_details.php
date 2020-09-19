@@ -4,7 +4,24 @@ require("connect.php");
 
 $con = getConn();
 
+ if(!empty($_POST['event_id'])) {
+
+	 if(!$con) {
+	 	die();
+	 } else {
+
+	 	$sql = "SELECT * from event_details where event_id='".$_POST['event_id']."'";
+	 	$query = mysqli_query($con, $sql);
+
+	 	$row = mysqli_fetch_array($query);
+	 }
+ } else {
+ 	header('Location: ./404.html');
+ 	exit();
+ } 
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +33,7 @@ $con = getConn();
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Manage FAQ(s) | DSC GMRIT</title>
+  <title>Modify Event Details | DSC GMRIT</title>
     <link rel="icon" href="img/dsc_logo_min.png">
 
 
@@ -70,8 +87,8 @@ $con = getConn();
         <div id="collapseEvents" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
           
-            <a class="collapse-item" href="publish_event.php">Publish Event</a>
-            <a class="collapse-item" href="manage_events.php">Manage Events</a>
+            <a class="collapse-item" href="publish_event">Publish Event</a>
+            <a class="collapse-item" href="manage_events">Manage Events</a>
           </div>
         </div>
       </li>
@@ -85,7 +102,7 @@ $con = getConn();
         <div id="collapseParticipants" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Event Wise:</h6>
-            <a class="collapse-item" href="view_participants.php">View Participants</a>
+            <a class="collapse-item" href="view_participants">View Participants</a>
         
           </div>
         </div>
@@ -100,7 +117,7 @@ $con = getConn();
         </a>
         <div id="collapseIdeas" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="view_ideas.php">View Ideas</a>
+            <a class="collapse-item" href="view_ideas">View Ideas</a>
           </div>
         </div>
       </li>
@@ -113,7 +130,7 @@ $con = getConn();
         </a>
         <div id="collapseTeam" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="manage_team.php">Manage Team</a>
+            <a class="collapse-item" href="manage_team">Manage Team</a>
           </div>
         </div>
       </li>
@@ -126,8 +143,8 @@ $con = getConn();
         </a>
         <div id="collapseFAQs" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="add_faq_question.php">Add Question</a>
-             <a class="collapse-item" href="manage_faq_question.php">Manage Questions</a>
+            <a class="collapse-item" href="add_faq_question">Add Question</a>
+             <a class="collapse-item" href="manage_faq_question">Manage Questions</a>
           </div>
         </div>
       </li>
@@ -231,67 +248,118 @@ $con = getConn();
         </nav>
         <!-- End of Topbar -->
 
+        <?php 
+
+        $eventNameErr = $eventDateErr = $eventTimeErr = $eventOrganizingModeErr = $eventCostErr = $eventDescriptionErr = $eventSpeakerErr = $eventSponsorErr = $eventAssociateErr = "";
+
+ 		$eventName = $eventDate = $eventTime = $eventOrganizingMode = $eventCost = $eventDescription = $eventSpeaker = $eventSponsor = $eventAssociate = "";
+
+ 		$boolean = false;
+
+
+
+
+        ?>
+
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Manage Frequently Asked Question(s)</h1>
+          <h1 class="h3 mb-2 text-gray-800"><?php echo $row['event_name']; ?></h1>
 
           <hr>
-         
-          <!-- DataTales Example -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">List of FAQs</h6>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
 
-                      <th>Date Submitted</th>
-                      <th>Question</th>
-                      <th>Answer</th>
-                    
-                    </tr>
-                  </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Date Submitted</th>
-                      <th>Question</th>
-                      <th>Answer</th>
-                
-                    </tr>
-                  </tfoot>
-                  <tbody>
+           <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Modify Event Details</h6>
+                </div>
+             <div class="card-body">
 
-                     <?php 
+         		<form class="user" method="POST" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
-                         if(!$con){
-                              die("Connection Failed :" + mysqli_connect_error());
-                         } else {
+         		<div class="text-center">
+         			
+         			<img width="500px" height="300px" src="uploads/<?php echo $row['event_logo']; ?>" class="rounded img-thumbnail" alt="Responsive image">
+         			<p>&nbsp;</p>
+         			<label class="btn btn-primary">
+    					<i class="fas fa-pencil-alt"></i>&nbsp; Modify Event Poster<input type="file" hidden>
+					</label>&nbsp;&nbsp;
+					<label class="btn btn-danger">
+    					<i class="fas fa-times-circle"></i>&nbsp; Remove Event Poster<input type="file" hidden>
+					</label>
+         		</div>
 
-                          $sql = "SELECT * from faq";
+                <p>&nbsp;</p>
+                <div class="form-group">
+                  <label for="exampleInputEventName" class="m-0 font-weight-bold text-primary">Event Name Here</label>
+                  <input type="text" class="form-control" id="exampleInputEventName" placeholder="Name of the Event" name="eventName" value="<?php echo $row['event_name']; ?>">
+                  <span id="span"><?php echo $eventNameErr; ?></span>
+                </div>
 
-                          $query = mysqli_query($GLOBALS['con'], $sql);
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                  	<label for="exampleInputDate" class="m-0 font-weight-bold text-primary">Event Date Here</label>
+                    <input type="text" class="form-control" id="exampleInputDate" placeholder="Event Date" name="eventDate" value="<?php echo $row['date']; ?>">
+                    <span id="span"><?php echo $eventDateErr; ?></span>
+                  </div>
+                  <div class="col-sm-6">
+                  	<label for="exampleInputTime" class="m-0 font-weight-bold text-primary">Event Time Here</label>
+                    <input type="text" class="form-control " id="exampleInputTime" placeholder="Event Time" name="eventTime" value="<?php echo $row['time']; ?>">
+                    <span id="span"><?php echo $eventTimeErr; ?></span>
+                  </div>
+                </div>
 
-                          while($row = mysqli_fetch_array($query)) {
-                            echo "<tr>";
-                            echo "<td>".$row['publish_date']."</td>";
-                            echo "<td>".$row['question']."</td>";
-                            echo "<td>".$row['answer']."</td>";
-                            echo "</tr>";
-                          }
-                        }
-                      ?>
-                  
+                <div class="form-group">
+                	<label for="exampleInputOrganizationMode" class="m-0 font-weight-bold text-primary">Event Organizing Mode Here</label>
+                  <input type="text" class="form-control " id="exampleInputOrganizationMode" placeholder="Mode of Organizing" name="eventOrganizingMode" value="<?php echo $row['organizing_mode']; ?>">
+                  <span id="span"><?php echo $eventOrganizingModeErr; ?></span>
+                </div>
 
-                  </tbody>
-                </table>
-              </div>
-            </div>
+                <div class="form-group">
+                	<label for="exampleInputEventCost" class="m-0 font-weight-bold text-primary">Event Cost Here</label>
+                  <input type="text" class="form-control " id="exampleInputEventCost" placeholder="Event Cost" name="eventCost" value="<?php echo $row['event_cost']; ?>">
+                  <span id="span"><?php echo $eventCostErr; ?></span>
+                </div>
+
+                <div class="form-group">
+                	<label for="exampleInputEventDescription" class="m-0 font-weight-bold text-primary">Event Description Here</label>
+                  <input type="text" class="form-control " id="exampleInputEventDescription" placeholder="Enter Event Description" name="eventDescription" value="<?php echo $row['event_description']; ?>">
+                  <span id="span"><?php echo $eventDescriptionErr; ?></span>
+                </div>
+
+              
+                <div class="form-group">
+                	<label for="exampleInputEventSpeaker" class="m-0 font-weight-bold text-primary">Event Speaker Here</label>
+                  <input type="text" class="form-control " id="exampleInputEventSpeaker" placeholder="Enter Speakers for Event" name="eventSpeaker" value="<?php echo $row['event_speaker']; ?>">
+                  <span id="span"><?php echo $eventSpeakerErr; ?></span>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                  	<label for="exampleInputEventSponsor" class="m-0 font-weight-bold text-primary">Event Sponsor Here</label>
+                    <input type="text" class="form-control " id="exampleInputEventSponsor" placeholder="Event Sponsor" name="eventSponsor" value="<?php echo $row['event_sponsor']; ?>">
+                    <span id="span"><?php echo $eventSponsorErr; ?></span>
+                  </div>
+                  <div class="col-sm-6">
+                  	<label for="exampleInputEventAssociate" class="m-0 font-weight-bold text-primary">Event Associate Here</label>
+                    <input type="text" class="form-control " id="exampleInputEventAssociate" placeholder="Event Associate" name="eventAssociate" value="<?php echo $row['event_associate']; ?>">
+                    <span id="span"><?php echo $eventAssociateErr; ?></span>
+                  </div>
+                </div>
+
+                <!-- <div class="form-group">
+                  <input type="file" class="form-control " id="exampleInputFileName" name="fileToUpload">
+
+                </div>
+ -->
+                <input type="submit" class="btn-primary btn-user btn-block" name="eventSubmit" value="Publish Event">
+              
+              </form>
+
           </div>
+      </div>
+
+
 
         </div>
         <!-- /.container-fluid -->

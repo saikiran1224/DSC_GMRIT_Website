@@ -291,7 +291,7 @@ $con = getConn();
 
                           while($row = mysqli_fetch_array($query)) {
                             echo "<tr>";
-                            echo "<td align='center' ><img src='uploads/".$row['event_logo']."' width='150px' height='80px' alt='eventImage'></img></td>";
+                            echo "<td align='center'><img src='uploads/".$row['event_logo']."' width='130px' height='80px' alt='eventImage'></img></td>";
                             echo "<td>".$row['event_name']."</td>";
                             echo "<td>".$row['date']." ".$row['time']."</td>";
                             echo "<td>".$row['event_speaker']."</td>";
@@ -299,28 +299,26 @@ $con = getConn();
                             echo "<td>"; 
                             ?>
 
+                     <form method="POST" action="load_event_details.php">
 
+                      <input type='hidden' name='event_id' value="<?php echo $row['event_id']; ?>">
 
-                                 <a href="#" class="btn btn-primary a-btn-slide-text green" name="Edit" data-role="update" data-id="<?php echo $row['event_id']; ?>"><i class="fas fa-edit"></i>&nbsp; Edit
-                                 </a>
-                                &nbsp;&nbsp;
+                      <button type="submit" class="btn btn-primary a-btn-slide-text green" style="" name="Edit" ><i class="fas fa-edit"></i> Edit</button>&nbsp;&nbsp;
 
-                                <?php if($row['event_status'] == 'Upcoming') { ?>
-                                  <a href="#" class="btn btn-success a-btn-slide-text red" name="Delete" data-id="<?php echo $row['event_id']; ?>" data-status='Completed'>● Upcoming
-                                 </span>
-                                </a>
+                    <?php if($row['event_status'] == 'Upcoming') { ?>
+                        <a href="#" class="btn btn-success a-btn-slide-text red" name="Delete" data-id="<?php echo $row['event_id']; ?>" data-status='Completed'>● Upcoming</a>
 
-                               <?php } else { ?>
+                    <?php } else { ?>
 
                                 <a href="#" class="btn btn-danger a-btn-slide-text red" name="Delete" data-id="<?php echo $row['event_id']; ?>" data-status='Upcoming'>✓ Completed
-                                 </span>
                                 </a>
 
-                               <?php } ?>
+                    <?php } ?>
 
+                  </form>
                                 <script>
+
                                    $("a.red").click(function(){
-                                    //("Hello " + this.id);
                                     swal({
                                       title: 'Are you Sure you want to Event Status ?',
                                       text: '',
@@ -330,11 +328,9 @@ $con = getConn();
                                     })
                                     .then((willDelete) => {
                                       if (willDelete) { 
-                                        //swal(this.id);
                                         var el = this;
                                         var event_id = $(this).data('id');
                                         var event_status = $(this).data('status');
-                                        //swal(deleteid);
                                         $.ajax({
                                          url: 'change_event_status.php',
                                          type: 'POST',
@@ -352,22 +348,11 @@ $con = getConn();
                                            $(el).closest('a.red').attr("class","btn btn-danger a-btn-slide-text red");
 
                                            }
-                                                                                      /*$(el).find('.fas fa-circle').toggleClass('fas fa-circle');
-                                           $(el).closest('a.red').text('Offline');
-*/
-                                           /*$(el).closest('a.red').addClass("btn btn-danger a-btn-slide-text red");
-                                          */
-                                           /*$(el).closest('tr').fadeOut(800,function(){
-                                              //$(this).remove();
-                                           });*/
                                               
                                          }
                                         });
-
-                                      } else {
-                                        //swal('Restaurant is safe!');
-
                                       }
+
                                     });
                                   });
                                 </script>
@@ -378,18 +363,12 @@ $con = getConn();
                         }
 
                       ?>
-
-
-
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
-
         </div>
-        <!-- /.container-fluid -->
-
       </div>
       <!-- End of Main Content -->
 
