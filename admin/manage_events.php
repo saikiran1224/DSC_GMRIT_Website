@@ -29,6 +29,15 @@ $con = getConn();
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+   <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+          integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+          crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+
 </head>
 
 <body id="page-top">
@@ -282,22 +291,86 @@ $con = getConn();
 
                           while($row = mysqli_fetch_array($query)) {
                             echo "<tr>";
-                            echo "<td><img src='uploads/".$row['event_logo']."' width='150px' height='60px' alt='eventImage'></img></td>";
+                            echo "<td align='center' ><img src='uploads/".$row['event_logo']."' width='150px' height='80px' alt='eventImage'></img></td>";
                             echo "<td>".$row['event_name']."</td>";
                             echo "<td>".$row['date']." ".$row['time']."</td>";
                             echo "<td>".$row['event_speaker']."</td>";
                             echo "<td>".$row['organizing_mode']."</td>";
-                            echo "<td>"; ?>
+                            echo "<td>"; 
+                            ?>
 
-                                 <a href="#" class="btn btn-success a-btn-slide-text green" name="Edit" data-role="update" data-id="<?php echo $row['item_id']; ?>">
-                                <span  aria-hidden="true"><i class="fas fa-edit"></i></span>
+
+
+                                 <a href="#" class="btn btn-primary a-btn-slide-text green" name="Edit" data-role="update" data-id="<?php echo $row['event_id']; ?>"><i class="fas fa-edit"></i>&nbsp; Edit
                                  </a>
                                 &nbsp;&nbsp;
 
-                                <!-- Delete Button -->
-                                <a href="#" class="btn btn-danger a-btn-slide-text red" name="Delete" data-id="<?php echo $row['item_id']; ?>">
-                                 <span  aria-hidden="true"><i class="fas fa-trash-alt"></i></span>
+                                <?php if($row['event_status'] == 'Upcoming') { ?>
+                                  <a href="#" class="btn btn-success a-btn-slide-text red" name="Delete" data-id="<?php echo $row['event_id']; ?>" data-status='Completed'>● Upcoming
+                                 </span>
                                 </a>
+
+                               <?php } else { ?>
+
+                                <a href="#" class="btn btn-danger a-btn-slide-text red" name="Delete" data-id="<?php echo $row['event_id']; ?>" data-status='Upcoming'>✓ Completed
+                                 </span>
+                                </a>
+
+                               <?php } ?>
+
+                                <script>
+                                   $("a.red").click(function(){
+                                    //("Hello " + this.id);
+                                    swal({
+                                      title: 'Are you Sure you want to Event Status ?',
+                                      text: '',
+                                      icon: 'warning',
+                                      buttons: true,
+                                      dangerMode: true,
+                                    })
+                                    .then((willDelete) => {
+                                      if (willDelete) { 
+                                        //swal(this.id);
+                                        var el = this;
+                                        var event_id = $(this).data('id');
+                                        var event_status = $(this).data('status');
+                                        //swal(deleteid);
+                                        $.ajax({
+                                         url: 'change_event_status.php',
+                                         type: 'POST',
+                                         data: { id: event_id, status: event_status },
+                                         success: function(response){
+                                           // Remove row from HTML Table
+                                           if(event_status.localeCompare('Completed')) {
+                                            $(el).closest('a.red').text('● Upcoming');
+                                            $(el).closest('a.red').data("status","Completed");
+                                           $(el).closest('a.red').attr("class","btn btn-success a-btn-slide-text red");
+
+                                           } else {
+                                             $(el).closest('a.red').text('✓ Completed');
+                                            $(el).closest('a.red').data("status","Upcoming");
+                                           $(el).closest('a.red').attr("class","btn btn-danger a-btn-slide-text red");
+
+                                           }
+                                                                                      /*$(el).find('.fas fa-circle').toggleClass('fas fa-circle');
+                                           $(el).closest('a.red').text('Offline');
+*/
+                                           /*$(el).closest('a.red').addClass("btn btn-danger a-btn-slide-text red");
+                                          */
+                                           /*$(el).closest('tr').fadeOut(800,function(){
+                                              //$(this).remove();
+                                           });*/
+                                              
+                                         }
+                                        });
+
+                                      } else {
+                                        //swal('Restaurant is safe!');
+
+                                      }
+                                    });
+                                  });
+                                </script>
 
                           <?php  echo "</td>";
                                  echo "</tr>";
@@ -364,6 +437,9 @@ $con = getConn();
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+
+
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
@@ -376,6 +452,9 @@ $con = getConn();
 
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
+
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
   <script>
         

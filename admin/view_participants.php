@@ -1,3 +1,10 @@
+<?php
+
+require("connect.php");
+
+$con = getConn();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +30,48 @@
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+   <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+          integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+          crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+  
+  <script>
+
+    
+
+        function getParticipants(val) {
+
+            $('#dataTable').DataTable().destroy();
+
+            console.log(val);
+           var dataTable = $('#dataTable').DataTable({
+           "processing" : true,
+           "serverSide" : true,
+           "order" : [],
+           "ajax" : {
+            url:"get_participants.php",
+            type:"POST",
+            data:{
+              event_id: val
+             }
+            }
+          });
+                 
+      }
+    
+
+
+
+  
+
+
+     
+  </script>
 </head>
 
 <body id="page-top">
@@ -239,11 +288,33 @@
                 <div class="card-body">
 
                     <div class="form-group">
-                        <select class="form-control form-control-user p-2">
-                          <option>DSC Info Session</option>
-                          <option>Android App Development</option>
-                          <option>Web Development</option>
-                          <option>UiPath Automation</option>
+                        <select class="form-control form-control-user p-2" name="eventName" onchange="getParticipants(this.value)">
+
+                          <option value="">Select Event</option>
+                            <?php 
+
+                              if(!$con) {
+                                  die("Connection Failed :" + mysqli_connect_error());
+                              } else {
+
+                                 $sql = "SELECT event_id,event_name from event_details";
+
+                                 $query = mysqli_query($GLOBALS['con'], $sql);
+
+                                 if($query) {
+                                   while ($row = mysqli_fetch_array($query)) {
+                                     echo "<option value='".$row['event_id']."'>".$row['event_name']."</option>";
+                                   }
+                                 } else {
+                                   echo "<option>"."No Events Found !"."</option>";
+                                 }
+                              }
+
+                            ?>
+
+
+
+
                         </select>
                     </div>
 
@@ -279,54 +350,10 @@
                       <th>College Name</th>
                       </tr>
                   </tfoot>
-                  <tbody>
-
-
-                     <tr>
-
-                      <td>Saikiran Kopparthi</td>
-                      <td>18341A1224</td>
-                      <td>knvrssaikiran@gmail.com</td>
-                      <td>+91 9381384234</td>
-                      <td>GMR Institute of Technology</td>
-                       
-                    </tr>
-
-                    <tr>
-
-                      <td>Saikiran Kopparthi</td>
-                      <td>18341A1224</td>
-                      <td>knvrssaikiran@gmail.com</td>
-                      <td>+91 9381384234</td>
-                      <td>GMR Institute of Technology</td>
-                       
-                    </tr>
-                    <tr>
-
-                      <td>Saikiran Kopparthi</td>
-                      <td>18341A1224</td>
-                      <td>knvrssaikiran@gmail.com</td>
-                      <td>+91 9381384234</td>
-                      <td>GMR Institute of Technology</td>
-                       
-                    </tr>
-                    <tr>
-
-                      <td>Saikiran Kopparthi</td>
-                      <td>18341A1224</td>
-                      <td>knvrssaikiran@gmail.com</td>
-                      <td>+91 9381384234</td>
-                      <td>GMR Institute of Technology</td>
-                       
-                    </tr>
-
-
-
-
-
-
-                  </tbody>
+                  
                 </table>
+
+
               </div>
             </div>
           </div>
@@ -377,9 +404,12 @@
     </div>
   </div>
 
+
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+
 
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -394,7 +424,7 @@
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
 
-  <script>
+<script>
         
         $(document).bind("contextmenu",function(e) {
          e.preventDefault();

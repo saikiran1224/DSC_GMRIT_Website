@@ -111,7 +111,8 @@
                          <h1  class="turquoise">DSC - GMRIT</h1>
                             <p class="p-large">Learn Together | Code Together | Grow together</p>
                                 <p style="color:#000">
-                            Developer Student Clubs(DSC) are on-campus Communities to bridge the Gap between Theory & Practice. Students from all under-graduate and graduate programs with an interest in growing as a Developer are welcome to DSC. We, at DSC harness the knowledge base of students to empower the local Communities and Businesses with Technology.
+                            Developer Student Clubs(DSC) are On-Campus Communities to bridge the Gap between Theory & Practice. Students from all Under-Graduate & Graduate Programs, with an interest in growing as a Developer are welcome to DSC-GMRIT. We, at DSC-GMRIT harness the knowledge base of students to empower the local Communities and Businesses with Technology.
+
                         </p>
                         </p>
                             <a class="btn-solid-lg page-scroll" href="#community">Join Community</a>
@@ -136,7 +137,7 @@
             <div class="row">
                   <div class="col-lg-6 float-right">
                     <h2 class="turquoise">About us</h2>
-                     <p class="p-heading p-large" style="text-align:justify">DSC, GMR Institute of Technology | DSC, GMRIT is a realm for students who are interested in Google Developer Technologies. We provide an opportunity to showcase your skills, grow knowledge in a better learning environment. With a Perfect Blend of Professionalism, we act as a catalyst to bring the required change in the Society.<br>
+                     <p class="p-heading p-large" style="text-align:justify">DSC-GMR Institute of Technology | DSC-GMRIT, is a realm for students who are interested in Google Developer Technologies. We provide an opportunity to showcase your Skills, grow Knowledge in a better Learning Environment. With a perfect blend of Community Building & Professionalism , we act as a catalyst to bring the required Change in the Society.<br>
 
                  </p>
                  </div>
@@ -176,7 +177,8 @@
                         <img class="card-image" src="images/book.png" alt="alternative">
                         <div class="card-body">
                             <h4 class="card-title">Learn</h4>
-                            <p style="text-align:justify">Learn about wide range of Technical Topics in a peer-to-peer learning Environment</p>
+                            <p style="text-align:justify">Learn about wide-range of Technical Topics in a peer-to-peer learning Environment.
+                            s</p>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -186,7 +188,7 @@
                         <img class="card-image" src="images/book2.png" alt="alternative">
                         <div class="card-body">
                             <h4 class="card-title">Code</h4>
-                            <p style="text-align:justify"> Gain new skills through Coding in Study JAMs, in-person Training and Project Building Activities</p>
+                            <p style="text-align:justify"> Gain new skills through Coding in Study JAMs, in-person Training and Project Building Activities.</p>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -196,7 +198,7 @@
                         <img class="card-image" src="images/book3.png" alt="alternative">
                         <div class="card-body">
                             <h4 class="card-title">Grow</h4>
-                            <p style="text-align:justify">Meet other students in our activities, apply your new learnings to build great solutions for local problems</p>
+                            <p style="text-align:justify">Meet other students in our activities, apply your new learnings to build great solutions for local problems.</p>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -328,7 +330,7 @@
                                 </a>
                             </span>
                             <span class="fa-stack">
-                                <a href="#your-link">
+                                <a href="https://github.com/saitejavankayala">
                                     <i class="fas fa-circle fa-stack-2x github"></i>
                                     <i class="fab fa-github fa-stack-1x"></i>
                                 </a>
@@ -346,7 +348,7 @@
                         <p class="job-title">Web Developer</p>
                         <span class="social-icons">
                             <span class="fa-stack">
-                                <a href="www.linkedin.com/in/vinay-sriram-3692141b6" target="_blank">
+                                <a href="https://www.linkedin.com/in/vinay-sriram-3692141b6/" target="_blank">
                                     <i class="fas fa-circle fa-stack-2x linkedin"></i>
                                     <i class="fab fa-linkedin fa-stack-1x"></i>
                                 </a>
@@ -388,7 +390,7 @@
                             <img class="img-fluid" src="images/venkat.jpg" alt="alternative">
                         </div> <!-- end of image wrapper -->
                         <p ><strong>Mr. Venkatesh Muvvala</strong></p>
-                        <p class="job-title">Iot Developer</p>
+                        <p class="job-title">Events Manager</p>
                         <span class="social-icons">
                             <span class="fa-stack">
                                 <a href="https://www.linkedin.com/in/venkatesh-muvvala-287150177/" target="_blank">
@@ -431,7 +433,7 @@
 <div id="events">
     <div class="basic-1">
         <div class="container">
-      <h2 class="turquoise">Upcoming Events</h2>
+      <h2 class="turquoise">Upcoming Event</h2>
 <br>
 <?php foreach($users as $user)  
                         {   ?>
@@ -487,7 +489,7 @@
                               
                 <div class="col-lg-6 float-right">
                     <div class="text-container">
-                        <h2 class="turquoise">Out of the box !</h2>
+                        <h2 class="turquoise">Out of the Box !!!</h2>
                         <p style="text-align:justify">"The ability to think creatively, responding to needs and wishes, not to preconceived ideas of what something should look like, then the problem will be solved."<br>
                             <br>
 1. Do you imagine the masterpiece before it is even created?<br>
@@ -529,16 +531,16 @@
                         <br>
                         <div class="card">
              <div class="card-body">
-                            <h5 class="card-title">Hit Join Us Now to get on boarded !</h5>
+                            <h5 class="card-title">Hit Join Us Now to get on-boarded !!!</h5>
                             <br>
-                            <p style="text-align:justify">Step 1 :Click on Join us in GMRIT's DSC page <br>
+                            <p style="text-align:justify">Step 1: Click on Join us in GMRIT's DSC page.<br>
                                 <br>
-                            Step 2: Sign in with your  Account (Gmail only)<br>
+                            Step 2: Sign in with your Account (Gmail only).<br>
                             <br>
-                            Step 3:Fill the Details and hit the Sign up<br>
+                            Step 3: Fill the Details and hit the Sign up.<br>
                             <br>
                         </p>
-                            <p style="color:black">Congratulations,You're now part of DSC -GMRIT by Following the above Steps</p>
+                            <p style="color:black">Congratulations,You're now part of DSC -GMRIT by following the above Steps.</p>
         
                         </div>
                     </div>
@@ -583,7 +585,7 @@
                     </div> <!-- end of image-container -->
                 </div> <!-- end of col -->
                 <div class="col-lg-6">
-                    <h2  class="turquoise">FAQ'S</h2>
+                    <h2  class="turquoise">FAQs</h2>
 
                     <!-- Card Slider -->
                     <div class="slider-container">

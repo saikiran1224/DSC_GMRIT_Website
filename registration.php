@@ -110,9 +110,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2  class="turquoise">Register your seat !</h2>
+                    <h2  class="turquoise">Register your Seat !!!</h2>
                     <ul class="list-unstyled li-space-lg">
-                        <li class="address">Fill the form given below </li>
+                        <li class="address">Fill the Form given below </li>
 <!--                         <li><i class="fas fa-envelope"></i><a class="turquoise" href="">dsc.gmrit@gmail.com</a></li>
  -->                    </ul>
                 </div> <!-- end of col -->
@@ -140,29 +140,29 @@
  -->                            <input type="text" name='event_id' value="<?=$a?>" hidden>       
                         <div class="form-group">
                             <input type="text" class="form-control-input" id="cname" name="name" required>
-                            <label class="label-control" for="cname">Enter Name of Student</label>
+                            <label class="label-control" for="cname">Name here</label>
                             <div class="help-block with-errors"></div>
                         </div>
                             <div class="form-group">
                             <input type="email" class="form-control-input" id="cname" name="emailID" required>
-                            <label class="label-control" for="cname">Email Id</label>
+                            <label class="label-control" for="cname">Email ID here</label>
                             <div class="help-block with-errors"></div>
                         </div>
                          <div class="form-group">
                             <input type="text" class="form-control-input" id="cname" name="phone_number" required>
-                            <label class="label-control" for="cname">Phone Number</label>
+                            <label class="label-control" for="cname">Phone Number here</label>
                             <div class="help-block with-errors"></div>
                         </div>
                          <div class="form-group">
                             <input type="text" class="form-control-input" id="cname" name="jntuno" required>
-                            <label class="label-control" for="cname">Identity Number</label>
+                            <label class="label-control" for="cname">Identity Number (Roll No.) here</label>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="dropdown">
                             <select name="member_type" class="newform form-control-input">
-                                <option value="" disabled selected>Choose Graduate or Undergarduate</option>
+                                <option value="" disabled selected>Graduate (or) Under-Graduate here</option>
                                 <option value="Graduate">Graduate</option>
-                                <option value="Undergarduate">Undergarduate</option>
+                                <option value="Undergarduate">Under-Graduate</option>
                             </select>
                             
                         </div>
@@ -184,12 +184,12 @@
 <br>             
 <div class="form-group">
     <input type="text" class="form-control-input" id="cname" name="city" required>
-    <label class="label-control" for="cname">Enter city name</label>
+    <label class="label-control" for="cname">City (or) Area here</label>
     <div class="help-block with-errors"></div>
 </div>
 <div class="form-group">
     <input type="text" class="form-control-input" id="cname" name="company" required>
-    <label class="label-control" for="cname">College Name</label>
+    <label class="label-control" for="cname">College Name here</label>
     <div class="help-block with-errors"></div>
 </div>
 
