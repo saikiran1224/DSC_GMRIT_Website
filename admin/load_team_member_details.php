@@ -9,7 +9,7 @@ $con = getConn();
 	 	die();
 	 } else {
 
-	 	$sql = "SELECT * from event_details where event_id='".$_POST['event_id']."'";
+	 	$sql = "SELECT * from team where member_id='".$_POST['member_id']."'";
 	 	$query = mysqli_query($con, $sql);
 
 	 	$row = mysqli_fetch_array($query);
@@ -27,7 +27,7 @@ $con = getConn();
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Modify Event Details | DSC GMRIT</title>
+  <title>Modify Team Member Details | DSC GMRIT</title>
     <link rel="icon" href="img/dsc_logo_min.png">
 
 
@@ -57,15 +57,15 @@ $con = getConn();
 
 <body id="page-top">
 
-	<?php 
+<?php
 
-        $eventNameErr = $eventDateErr = $eventTimeErr = $eventOrganizingModeErr = $eventCostErr = $eventDescriptionErr = $eventSpeakerErr = $eventSponsorErr = $eventAssociateErr = "";
+  $memberNameErr = $memberDesignationErr = $memberDepartmentErr = $memberInterestsErr = $memberEmailIDErr = $memberPhoneNumberErr = $memberGithubErr = $memberLinkedInErr = $memberInstagramErr = "";
 
- 		$eventName = $eventDate = $eventTime = $eventOrganizingMode = $eventCost = $eventDescription = $eventSpeaker = $eventSponsor = $eventAssociate = "";
+ $memberName = $memberDesignation = $memberDepartment = $memberInterests = $memberEmailID = $memberPhoneNumber = $memberGithub = $memberLinkedIn = $memberInstagram = "";
 
- 		$boolean = false;
+ $boolean = false;
 
- 		//Remove spaces, slashes and prevent XSS
+ //Remove spaces, slashes and prevent XSS
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
@@ -77,154 +77,152 @@ function test_input($data) {
 if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
 
   //Event Name Validation
-  if (empty($_POST["eventName"])) {
-    $eventNameErr = "Event Name required";
+  if (empty($_POST["memberName"])) {
+    $memberNameErr = "Member Name required";
     $boolean = false;
   } else {
     // check if name only contains letters and whitespace
-    if (!preg_match("/^[a-zA-Z ]*$/",$eventName)) {
-      $eventNameErr = "Only letters and white space allowed";
+    if (!preg_match("/^[a-zA-Z ]*$/",$memberName)) {
+      $memberNameErr = "Only letters and white space allowed";
     }else{
-        $eventName = test_input($_POST["eventName"]);
+        $memberName = test_input($_POST["eventName"]);
         $boolean = true;
     }
   }
 
   //Event Date Validation
-  if (empty($_POST["eventDate"])) {
-    $eventDateErr = "Event Date required";
+  if (empty($_POST["memberDesignation"])) {
+    $memberDesignationErr = "Designation required";
     $boolean = false;
   } else {
     // check if name only contains letters and whitespace
-        $eventDate = test_input($_POST["eventDate"]);
+        $memberDesignation = test_input($_POST["memberDesignation"]);
         $boolean = true;
   }
 
   //Event Time Validation
-  if (empty($_POST["eventTime"])) {
-    $eventTimeErr = "Event Time required";
+  if (empty($_POST["memberDepartment"])) {
+    $memberDepartmentErr = "Department required";
     $boolean = false;
   } else {
-        $eventTime = test_input($_POST["eventTime"]);
+        $memberDepartment = test_input($_POST["memberDepartment"]);
         $boolean = true;
   }
 
   //Event Organizing Mode Validation
-  if (empty($_POST["eventOrganizingMode"])) {
-    $eventOrganizingModeErr = "Mode of Organizing required";
+  if (empty($_POST["memberInterests"])) {
+    $memberInterestsErr = "Interests required";
     $boolean = false;
   } else {
     // check if name only contains letters and whitespace
-    if (!preg_match("/^[a-zA-Z ]*$/",$eventOrganizingMode)) {
-      $eventOrganizingModeErr = "Only letters and white space allowed";
-    }else{
-        $eventOrganizingMode = test_input($_POST["eventOrganizingMode"]);
+        $memberInterests = test_input($_POST["memberInterests"]);
         $boolean = true;
-    }
   }
 
 
   //Event Cost Validation
-  if (empty($_POST["eventCost"])) {
-    $eventCostErr = "Event Cost required";
+  if (empty($_POST["memberEmailID"])) {
+    $memberEmailIDErr = "EmailID required";
     $boolean = false;
   } else {
     // check if name only contains letters and whitespace
-        $eventCost = test_input($_POST["eventCost"]);
+        $memberEmailID = test_input($_POST["memberEmailID"]);
         $boolean = true;
   }
 
   //Event Cost Validation
-  if (empty($_POST["eventDescription"])) {
-    $eventDescriptionErr = "Event Description required";
+  if (empty($_POST["memberPhoneNumber"])) {
+    $memberPhoneNumberErr = "Phone Number required";
     $boolean = false;
   } else {
     // check if name only contains letters and whitespace
-        $eventDescription = test_input($_POST["eventDescription"]);
+        $memberPhoneNumber = test_input($_POST["memberPhoneNumber"]);
         $boolean = true;
   }
 
   //Event Cost Validation
-  if (empty($_POST["eventSpeaker"])) {
-    $eventSpeakerErr = "Event Speaker required";
+  if (empty($_POST["memberGithub"])) {
+    $memberGithubErr = "Github URL required";
     $boolean = false;
   } else {
     // check if name only contains letters and whitespace
-        $eventSpeaker = test_input($_POST["eventSpeaker"]);
+        $memberGithub = test_input($_POST["memberGithub"]);
         $boolean = true;
   }
 
   //Event Cost Validation
-  if (empty($_POST["eventSponsor"])) {
-    $eventSponsorErr = "Event Sponsor required";
+  if (empty($_POST["memberInstagram"])) {
+    $memberInstagramErr = "Instagram URL required";
     $boolean = false;
   } else {
     // check if name only contains letters and whitespace
-        $eventSponsor = test_input($_POST["eventSponsor"]);
+        $memberInstagram = test_input($_POST["memberInstagram"]);
         $boolean = true;
   }
 
   //Event Cost Validation
-  if (empty($_POST["eventAssociate"])) {
-    $eventAssociateErr = "Event Associate required";
+  if (empty($_POST["memberLinkedIn"])) {
+    $memberLinkedInErr = "LinkedIn URL required";
     $boolean = false;
   } else {
     // check if name only contains letters and whitespace
-        $eventAssociate = test_input($_POST["eventAssociate"]);
+        $memberLinkedIn = test_input($_POST["memberLinkedIn"]);
         $boolean = true;
   }
 
 
-   function updateEvent() {
+   function updateMemberDetails() {
 
-   	    $eventID = $_POST['eventID'];
-   	    $dbFileName = $_POST['dbFileName'];
+         $memberID = $_POST['member_ID'];
+         $dbFileName = $_POST['dbFileName'];
 
-   	    $logoFileName = basename($_FILES["fileToUpload"]["name"]);
+        $logoFileName = basename($_FILES["fileToUpload"]["name"]);
 
-   	    if(!empty($logoFileName)) {
-   	    	// User has uploaded a new File
-   	    	$fileName = $logoFileName;
+        if(!empty($logoFileName)) {
+          // User has uploaded a new File
+          $fileName = $logoFileName;
 
-	        $target_dir = "uploads/";
-	        $target_file = $target_dir.basename($_FILES['fileToUpload']['name']);
-	        $uploadOk = 1;
-	        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+          $target_dir = "team/";
+          $target_file = $target_dir.basename($_FILES['fileToUpload']['name']);
+          $uploadOk = 1;
+          $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-	        if ($uploadOk == 0) {
-	          echo "Sorry, your file was not uploaded.";
-	          $boolean = false;
-	          // if everything is ok, try to upload file
-	        } else {
-	            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-	         // echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-	            $boolean = true;
-	            } else {
-	              //echo "Sorry, there was an error uploading your file.";
-	              $boolean = true;
-	            }
-	        }
+          if ($uploadOk == 0) {
+            echo "Sorry, your file was not uploaded.";
+            $boolean = false;
+            // if everything is ok, try to upload file
+          } else {
+              if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+           // echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+              $boolean = true;
+              } else {
+                //echo "Sorry, there was an error uploading your file.";
+                $boolean = true;
+              }
+          }
 
-	       } else {
-	       	  $fileName = $dbFileName;
-	       }
+         } else {
+           //User has not uploaded New File
+            $fileName = $dbFileName;
+         }
 
-           if(!empty($fileName)) {
+    
+
+        if(!empty($fileName)) {
+
+          $sql = "UPDATE team SET member_name ='".$_POST['memberName']."', member_designation='".$_POST['memberDesignation']."',member_dept = '".$_POST['memberDepartment']."',member_interests = '".$_POST['memberInterests']."', member_email = '".$_POST['memberEmailID']."',phone_number = '".$_POST['memberPhoneNumber']."', github_profile = '".$_POST['memberGithub']."', instagram_profile = '".$_POST['memberInstagram']."', linkedlin_profile = '".$_POST['memberLinkedIn']."',member_photo = '$fileName' where member_id = '$memberID' ";
+
+          $query = mysqli_query($GLOBALS['con'], $sql);
+
+          if($query) {
+            header('Location: ./manage_team.php');
+            echo "<script>swal('Member Added Successfully !', '','success'); </script>";
+          } else {
+            echo "<script>swal('Something Error Occurred !', '','warning');</script>";
+          }
 
 
-              
-
-	          $sql = "UPDATE event_details SET event_name='".$_POST['eventName']."',date='".$_POST['eventDate']."',time = '".$_POST['eventTime']."',organizing_mode = '".$_POST['eventOrganizingMode']."', event_cost ='".$_POST['eventCost']."',event_description='".$_POST['eventDescription']."',event_speaker='".$_POST['eventSpeaker']."', event_sponsor='".$_POST['eventSponsor']."',event_associate='".$_POST['eventAssociate']."', event_logo='$fileName' where event_id='$eventID'";
-
-	          $query = mysqli_query($GLOBALS['con'], $sql);
-
-	          if($query) {
-	           header('Location: manage_events.php');
-
-	          } else {
-	            echo "<script>swal('Something Error Occurred !', '','warning');</script>";
-	          }
-	       }   
+        }
 
    }
 
@@ -236,8 +234,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
           die("Connection Failed :" + mysqli_connect_error());
       }else{
 
-          if(isset($_POST["eventSubmit"])){
-             updateEvent();
+          if(isset($_POST["updateMember"])){
+             updateMemberDetails();
              mysqli_close($GLOBALS["con"]);
              $boolean = false;
           }    
@@ -453,28 +451,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800"><?php echo $row['event_name']; ?></h1>
+          <h1 class="h3 mb-2 text-gray-800"><?php echo $row['member_name']; ?></h1>
 
           <hr>
 
            <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Modify Event Details</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Modify Team Member Details</h6>
                 </div>
              <div class="card-body">
 
          		<form class="user" method="POST" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
-         		<input type="hidden" name="eventID" value="<?php echo $row['event_id']; ?>">
+         		<input type="hidden" name="member_ID" value="<?php echo $row['member_id']; ?>">
 
-         		<input type="hidden" name="dbFileName" value="<?php echo $row['event_logo']; ?>">
+         		<input type="hidden" name="dbFileName" value="<?php echo $row['member_photo']; ?>">
 
          		<div class="text-center">
          			
-         			<img width="500px" height="300px" src="uploads/<?php echo $row['event_logo']; ?>" class="rounded img-thumbnail" alt="Responsive image" id="selectedImage">
+         			<img width="200px" height="200px" src="team/<?php echo $row['member_photo']; ?>" class="rounded img-thumbnail" alt="Team Member image" id="selectedImage">
          			<p>&nbsp;</p>
          			<label class="btn btn-primary" >
-    					<i class="fas fa-pencil-alt"></i>&nbsp; Modify Event Poster
+    					<i class="fas fa-pencil-alt"></i>&nbsp; Modify Profile Picture
     					<input type="file" id="imgInp" name="fileToUpload" hidden>
 					</label>&nbsp;&nbsp;
 			    </div>
@@ -503,68 +501,69 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
 
                 <p>&nbsp;</p>
                 <div class="form-group">
-                  <label for="exampleInputEventName" class="m-0 font-weight-bold text-primary">Event Name Here</label>
-                  <input type="text" class="form-control" id="exampleInputEventName" placeholder="Name of the Event" name="eventName" value="<?php echo $row['event_name']; ?>">
-                  <span id="span"><?php echo $eventNameErr; ?></span>
+                  <label for="exampleInputMemberName" class="m-0 font-weight-bold text-primary">Member Name Here</label>
+                  <input type="text" class="form-control form-control-user" id="exampleInputMemberName" placeholder="Name of the Member" name="memberName" value="<?php echo $row['member_name']; ?>">
+                  <span id="span"><?php echo $memberNameErr; ?></span>
                 </div>
 
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                  	<label for="exampleInputDate" class="m-0 font-weight-bold text-primary">Event Date Here</label>
-                    <input type="text" class="form-control" id="exampleInputDate" placeholder="Event Date" name="eventDate" value="<?php echo $row['date']; ?>">
-                    <span id="span"><?php echo $eventDateErr; ?></span>
+                    <label for="exampleInputMemberDesignation" class="m-0 font-weight-bold text-primary">Member Designation Here</label>
+                    <input type="text" class="form-control form-control-user" id="exampleInputMemberDesignation" placeholder="Designation" name="memberDesignation" value="<?php echo $row['member_designation']; ?>">
+                    <span id="span"><?php echo $memberDesignationErr; ?></span>
                   </div>
                   <div class="col-sm-6">
-                  	<label for="exampleInputTime" class="m-0 font-weight-bold text-primary">Event Time Here</label>
-                    <input type="text" class="form-control " id="exampleInputTime" placeholder="Event Time" name="eventTime" value="<?php echo $row['time']; ?>">
-                    <span id="span"><?php echo $eventTimeErr; ?></span>
+                     <label for="exampleInputDepartment" class="m-0 font-weight-bold text-primary">Member Department Here</label>
+                    <input type="text" class="form-control form-control-user" id="exampleInputDepartment" placeholder="Year and Department" name="memberDepartment" value="<?php echo $row['member_dept']; ?>">
+                    <span id="span"><?php echo $memberDepartmentErr; ?></span>
                   </div>
                 </div>
 
                 <div class="form-group">
-                	<label for="exampleInputOrganizationMode" class="m-0 font-weight-bold text-primary">Event Organizing Mode Here</label>
-                  <input type="text" class="form-control " id="exampleInputOrganizationMode" placeholder="Mode of Organizing" name="eventOrganizingMode" value="<?php echo $row['organizing_mode']; ?>">
-                  <span id="span"><?php echo $eventOrganizingModeErr; ?></span>
+                   <label for="exampleInputInterests" class="m-0 font-weight-bold text-primary">Member Interests Here</label>
+                  <input type="text" class="form-control form-control-user" id="exampleInputInterests" placeholder="Interests" name="memberInterests" value="<?php echo $row['member_interests']; ?>">
+                  <span id="span"><?php echo $memberInterestsErr; ?></span>
                 </div>
 
                 <div class="form-group">
-                	<label for="exampleInputEventCost" class="m-0 font-weight-bold text-primary">Event Cost Here</label>
-                  <input type="text" class="form-control " id="exampleInputEventCost" placeholder="Event Cost" name="eventCost" value="<?php echo $row['event_cost']; ?>">
-                  <span id="span"><?php echo $eventCostErr; ?></span>
+                   <label for="exampleInputMail" class="m-0 font-weight-bold text-primary">Member Email ID Here</label>
+                  <input type="text" class="form-control form-control-user" id="exampleInputMail" placeholder="Email ID" name="memberEmailID" value="<?php echo $row['member_email']; ?>">
+                  <span id="span"><?php echo $memberEmailIDErr; ?></span>
                 </div>
 
                 <div class="form-group">
-                	<label for="exampleInputEventDescription" class="m-0 font-weight-bold text-primary">Event Description Here</label>
-                  <input type="text" class="form-control " id="exampleInputEventDescription" placeholder="Enter Event Description" name="eventDescription" value="<?php echo $row['event_description']; ?>">
-                  <span id="span"><?php echo $eventDescriptionErr; ?></span>
+                   <label for="exampleInputPhoneNumber" class="m-0 font-weight-bold text-primary">Member Phone Number Here</label>
+                  <input type="text" class="form-control form-control-user" id="exampleInputPhoneNumber" placeholder="Phone Number" name="memberPhoneNumber" value="<?php echo $row['phone_number']; ?>">
+                  <span id="span"><?php echo $memberPhoneNumberErr; ?></span>
                 </div>
 
               
                 <div class="form-group">
-                	<label for="exampleInputEventSpeaker" class="m-0 font-weight-bold text-primary">Event Speaker Here</label>
-                  <input type="text" class="form-control " id="exampleInputEventSpeaker" placeholder="Enter Speakers for Event" name="eventSpeaker" value="<?php echo $row['event_speaker']; ?>">
-                  <span id="span"><?php echo $eventSpeakerErr; ?></span>
+                   <label for="exampleInputGithub" class="m-0 font-weight-bold text-primary">Member GitHub URL Here</label>
+                  <input type="text" class="form-control form-control-user" id="exampleInputGithub" placeholder="Github Profile URL" value="<?php echo $row['github_profile']; ?>">
+                  <span id="span"><?php echo $memberGithubErr; ?></span>
                 </div>
 
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                  	<label for="exampleInputEventSponsor" class="m-0 font-weight-bold text-primary">Event Sponsor Here</label>
-                    <input type="text" class="form-control " id="exampleInputEventSponsor" placeholder="Event Sponsor" name="eventSponsor" value="<?php echo $row['event_sponsor']; ?>">
-                    <span id="span"><?php echo $eventSponsorErr; ?></span>
+                     <label for="exampleInputInstagram" class="m-0 font-weight-bold text-primary">Member Instagram URL Here</label>
+                    <input type="text" class="form-control form-control-user" id="exampleInputInstagram" placeholder="Instagram Profile URL" name="memberInstagram" value="<?php echo $row['instagram_profile']; ?>">
+                    <span id="span"><?php echo $memberInstagramErr; ?></span>
                   </div>
                   <div class="col-sm-6">
-                  	<label for="exampleInputEventAssociate" class="m-0 font-weight-bold text-primary">Event Associate Here</label>
-                    <input type="text" class="form-control " id="exampleInputEventAssociate" placeholder="Event Associate" name="eventAssociate" value="<?php echo $row['event_associate']; ?>">
-                    <span id="span"><?php echo $eventAssociateErr; ?></span>
+                     <label for="exampleInputLinkedIn" class="m-0 font-weight-bold text-primary">Member LinkedIn URL Here</label>
+                    <input type="text" class="form-control form-control-user" id="exampleInputLinkedIn" placeholder="LinkedIn Profile URL" name="memberLinkedIn" value="<?php echo $row['linkedlin_profile']; ?>">
+                    <span id="span"><?php echo $memberLinkedInErr; ?></span>
                   </div>
                 </div>
+
 
                 <!-- <div class="form-group">
                   <input type="file" class="form-control " id="exampleInputFileName" name="fileToUpload">
 
                 </div>
  -->
-                <input type="submit" class="btn-primary btn-user btn-block" name="eventSubmit" value="Update Event Details Event">
+                <input type="submit" class="btn-primary btn-user btn-block" name="updateMember" value="Update Event Details Event">
               
               </form>
 

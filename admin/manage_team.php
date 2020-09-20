@@ -30,6 +30,11 @@ $con = getConn();
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+          <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+
 </head>
 
 <body id="page-top">
@@ -113,6 +118,7 @@ $con = getConn();
         </a>
         <div id="collapseTeam" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="add_team_member.php">Add Team Member</a>
             <a class="collapse-item" href="manage_team.php">Manage Team</a>
           </div>
         </div>
@@ -291,15 +297,59 @@ $con = getConn();
                             echo "<td>".$row['member_dept']."</td>";
                             echo "<td>"; ?>
 
-                                 <a href="#" class="btn btn-success a-btn-slide-text green" name="Edit" data-role="update" data-id="<?php echo $row['item_id']; ?>">
-                                <span  aria-hidden="true"><i class="fas fa-edit"></i></span>
-                                 </a>
-                                &nbsp;&nbsp;
+                    <form method="POST" action="load_team_member_details.php">
 
-                                <!-- Delete Button -->
-                                <a href="#" class="btn btn-danger a-btn-slide-text red" name="Delete" data-id="<?php echo $row['item_id']; ?>">
-                                 <span  aria-hidden="true"><i class="fas fa-trash-alt"></i></span>
-                                </a>
+                      <input type='hidden' name='member_id' value="<?php echo $row['member_id']; ?>">
+
+                      <button type="submit" class="btn btn-primary a-btn-slide-text green" style="" name="Edit" ><i class="fas fa-edit"></i> Edit</button>&nbsp;&nbsp;
+
+                      <!-- Delete Button -->
+                      <a href="#" class="btn btn-danger a-btn-slide-text red" name="Delete" data-id="<?php echo $row['member_id']; ?>">
+                       <span  aria-hidden="true"><i class="fas fa-trash-alt"></i> Delete</span>
+                      </a>
+
+                        <script>
+                          $("a.red").click(function(){
+                            //("Hello " + this.id);
+                            swal({
+                              title: 'Are you sure to delete Member ?',
+                              text: 'You will not be able to recover the Member Details again!',
+                              icon: 'warning',
+                              buttons: true,
+                              dangerMode: true,
+                            })
+                            .then((willDelete) => {
+                              if (willDelete) { 
+                                //swal(this.id);
+                                var el = this;
+                                var deleteid = $(this).data('id');
+                                //swal(deleteid);
+                                $.ajax({
+                                 url: 'remove_team_member.php',
+                                 type: 'POST',
+                                 data: { id: deleteid },
+                                 success: function(response){
+                                   // Remove row from HTML Table
+                                   $(el).closest('tr').css('background','tomato');
+                                   $(el).closest('tr').fadeOut(800,function(){
+                                      $(this).remove();
+                                   });
+                                      
+                                 }
+                                });
+
+                              } else {
+                                //swal('Restaurant is safe!');
+
+                              }
+                            });
+
+                            
+                          });
+
+                          </script>
+
+                    </form>  
 
                           <?php  echo "</td>";
                                  echo "</tr>";
@@ -307,10 +357,6 @@ $con = getConn();
                         }
 
                       ?>
-
-
-
-                    
                   </tbody>
                 </table>
               </div>
@@ -363,6 +409,8 @@ $con = getConn();
     </div>
   </div>
 
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+      
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

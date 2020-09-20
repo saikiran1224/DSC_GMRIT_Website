@@ -155,6 +155,7 @@ $con = getConn();
         </a>
         <div id="collapseTeam" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="add_team_member.php">Add Team Member</a>
             <a class="collapse-item" href="manage_team.php">Manage Team</a>
           </div>
         </div>
