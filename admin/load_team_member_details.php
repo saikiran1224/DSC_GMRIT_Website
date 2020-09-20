@@ -9,7 +9,7 @@ $con = getConn();
 	 	die();
 	 } else {
 
-	 	$sql = "SELECT * from team where member_id='".$_POST['member_id']."'";
+	 	$sql = "SELECT * from team where member_id='".$_POST['member_ID']."'";
 	 	$query = mysqli_query($con, $sql);
 
 	 	$row = mysqli_fetch_array($query);
@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
     if (!preg_match("/^[a-zA-Z ]*$/",$memberName)) {
       $memberNameErr = "Only letters and white space allowed";
     }else{
-        $memberName = test_input($_POST["eventName"]);
+        $memberName = test_input($_POST["memberName"]);
         $boolean = true;
     }
   }
@@ -540,7 +540,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
               
                 <div class="form-group">
                    <label for="exampleInputGithub" class="m-0 font-weight-bold text-primary">Member GitHub URL Here</label>
-                  <input type="text" class="form-control form-control-user" id="exampleInputGithub" placeholder="Github Profile URL" value="<?php echo $row['github_profile']; ?>">
+                  <input type="text" class="form-control form-control-user" id="exampleInputGithub" placeholder="Github Profile URL" name="memberGithub" value="<?php echo $row['github_profile']; ?>">
                   <span id="span"><?php echo $memberGithubErr; ?></span>
                 </div>
 

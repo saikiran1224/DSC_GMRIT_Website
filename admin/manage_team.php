@@ -299,7 +299,7 @@ $con = getConn();
 
                     <form method="POST" action="load_team_member_details.php">
 
-                      <input type='hidden' name='member_id' value="<?php echo $row['member_id']; ?>">
+                      <input type='hidden' name='member_ID' value="<?php echo $row['member_id']; ?>">
 
                       <button type="submit" class="btn btn-primary a-btn-slide-text green" style="" name="Edit" ><i class="fas fa-edit"></i> Edit</button>&nbsp;&nbsp;
 
