@@ -1,10 +1,9 @@
+<!DOCTYPE html>
 <?php
 
 require("connect.php");
 
 $con = getConn();
-
- if(!empty($_POST['event_id'])) {
 
 	 if(!$con) {
 	 	die();
@@ -15,14 +14,9 @@ $con = getConn();
 
 	 	$row = mysqli_fetch_array($query);
 	 }
- } else {
- 	header('Location: ./404.html');
- 	exit();
- } 
+ 
 
 ?>
-
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -44,12 +38,217 @@ $con = getConn();
   <!-- Custom styles for this template -->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+   <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+          integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+          crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
 <body id="page-top">
+
+	<?php 
+
+        $eventNameErr = $eventDateErr = $eventTimeErr = $eventOrganizingModeErr = $eventCostErr = $eventDescriptionErr = $eventSpeakerErr = $eventSponsorErr = $eventAssociateErr = "";
+
+ 		$eventName = $eventDate = $eventTime = $eventOrganizingMode = $eventCost = $eventDescription = $eventSpeaker = $eventSponsor = $eventAssociate = "";
+
+ 		$boolean = false;
+
+ 		//Remove spaces, slashes and prevent XSS
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" ) {
+
+  //Event Name Validation
+  if (empty($_POST["eventName"])) {
+    $eventNameErr = "Event Name required";
+    $boolean = false;
+  } else {
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^[a-zA-Z ]*$/",$eventName)) {
+      $eventNameErr = "Only letters and white space allowed";
+    }else{
+        $eventName = test_input($_POST["eventName"]);
+        $boolean = true;
+    }
+  }
+
+  //Event Date Validation
+  if (empty($_POST["eventDate"])) {
+    $eventDateErr = "Event Date required";
+    $boolean = false;
+  } else {
+    // check if name only contains letters and whitespace
+        $eventDate = test_input($_POST["eventDate"]);
+        $boolean = true;
+  }
+
+  //Event Time Validation
+  if (empty($_POST["eventTime"])) {
+    $eventTimeErr = "Event Time required";
+    $boolean = false;
+  } else {
+        $eventTime = test_input($_POST["eventTime"]);
+        $boolean = true;
+  }
+
+  //Event Organizing Mode Validation
+  if (empty($_POST["eventOrganizingMode"])) {
+    $eventOrganizingModeErr = "Mode of Organizing required";
+    $boolean = false;
+  } else {
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^[a-zA-Z ]*$/",$eventOrganizingMode)) {
+      $eventOrganizingModeErr = "Only letters and white space allowed";
+    }else{
+        $eventOrganizingMode = test_input($_POST["eventOrganizingMode"]);
+        $boolean = true;
+    }
+  }
+
+
+  //Event Cost Validation
+  if (empty($_POST["eventCost"])) {
+    $eventCostErr = "Event Cost required";
+    $boolean = false;
+  } else {
+    // check if name only contains letters and whitespace
+        $eventCost = test_input($_POST["eventCost"]);
+        $boolean = true;
+  }
+
+  //Event Cost Validation
+  if (empty($_POST["eventDescription"])) {
+    $eventDescriptionErr = "Event Description required";
+    $boolean = false;
+  } else {
+    // check if name only contains letters and whitespace
+        $eventDescription = test_input($_POST["eventDescription"]);
+        $boolean = true;
+  }
+
+  //Event Cost Validation
+  if (empty($_POST["eventSpeaker"])) {
+    $eventSpeakerErr = "Event Speaker required";
+    $boolean = false;
+  } else {
+    // check if name only contains letters and whitespace
+        $eventSpeaker = test_input($_POST["eventSpeaker"]);
+        $boolean = true;
+  }
+
+  //Event Cost Validation
+  if (empty($_POST["eventSponsor"])) {
+    $eventSponsorErr = "Event Sponsor required";
+    $boolean = false;
+  } else {
+    // check if name only contains letters and whitespace
+        $eventSponsor = test_input($_POST["eventSponsor"]);
+        $boolean = true;
+  }
+
+  //Event Cost Validation
+  if (empty($_POST["eventAssociate"])) {
+    $eventAssociateErr = "Event Associate required";
+    $boolean = false;
+  } else {
+    // check if name only contains letters and whitespace
+        $eventAssociate = test_input($_POST["eventAssociate"]);
+        $boolean = true;
+  }
+
+
+   function updateEvent() {
+
+   	    $eventID = $_POST['eventID'];
+   	    $dbFileName = $_POST['dbFileName'];
+
+   	    $logoFileName = basename($_FILES["fileToUpload"]["name"]);
+
+   	    if(!empty($logoFileName)) {
+   	    	// User has uploaded a new File
+   	    	$fileName = $logoFileName;
+
+	        $target_dir = "uploads/";
+	        $target_file = $target_dir.basename($_FILES['fileToUpload']['name']);
+	        $uploadOk = 1;
+	        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+	        if ($uploadOk == 0) {
+	          echo "Sorry, your file was not uploaded.";
+	          $boolean = false;
+	          // if everything is ok, try to upload file
+	        } else {
+	            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+	         // echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+	            $boolean = true;
+	            } else {
+	              //echo "Sorry, there was an error uploading your file.";
+	              $boolean = true;
+	            }
+	        }
+
+	       } else {
+	       	  $fileName = $dbFileName;
+	       }
+
+           if(!empty($fileName)) {
+
+
+              
+
+	          $sql = "UPDATE event_details SET event_name='".$_POST['eventName']."',date='".$_POST['eventDate']."',time = '".$_POST['eventTime']."',organizing_mode = '".$_POST['eventOrganizingMode']."', event_cost ='".$_POST['eventCost']."',event_description='".$_POST['eventDescription']."',event_speaker='".$_POST['eventSpeaker']."', event_sponsor='".$_POST['eventSponsor']."',event_associate='".$_POST['eventAssociate']."', event_logo='$fileName' where event_id='$eventID'";
+
+	          $query = mysqli_query($GLOBALS['con'], $sql);
+
+	          if($query) {
+	           header('Location: manage_events.php');
+
+	          } else {
+	            echo "<script>swal('Something Error Occurred !', '','warning');</script>";
+	          }
+	       }   
+
+   }
+
+
+  if($boolean){
+      
+      //Check for DB Connection
+      if(!$con){
+          die("Connection Failed :" + mysqli_connect_error());
+      }else{
+
+          if(isset($_POST["eventSubmit"])){
+             updateEvent();
+             mysqli_close($GLOBALS["con"]);
+             $boolean = false;
+          }    
+      }
+   }
+
+
+}
+
+?>
+
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -248,18 +447,6 @@ $con = getConn();
         </nav>
         <!-- End of Topbar -->
 
-        <?php 
-
-        $eventNameErr = $eventDateErr = $eventTimeErr = $eventOrganizingModeErr = $eventCostErr = $eventDescriptionErr = $eventSpeakerErr = $eventSponsorErr = $eventAssociateErr = "";
-
- 		$eventName = $eventDate = $eventTime = $eventOrganizingMode = $eventCost = $eventDescription = $eventSpeaker = $eventSponsor = $eventAssociate = "";
-
- 		$boolean = false;
-
-
-
-
-        ?>
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -277,17 +464,41 @@ $con = getConn();
 
          		<form class="user" method="POST" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
+         		<input type="hidden" name="eventID" value="<?php echo $row['event_id']; ?>">
+
+         		<input type="hidden" name="dbFileName" value="<?php echo $row['event_logo']; ?>">
+
          		<div class="text-center">
          			
-         			<img width="500px" height="300px" src="uploads/<?php echo $row['event_logo']; ?>" class="rounded img-thumbnail" alt="Responsive image">
+         			<img width="500px" height="300px" src="uploads/<?php echo $row['event_logo']; ?>" class="rounded img-thumbnail" alt="Responsive image" id="selectedImage">
          			<p>&nbsp;</p>
-         			<label class="btn btn-primary">
-    					<i class="fas fa-pencil-alt"></i>&nbsp; Modify Event Poster<input type="file" hidden>
+         			<label class="btn btn-primary" >
+    					<i class="fas fa-pencil-alt"></i>&nbsp; Modify Event Poster
+    					<input type="file" id="imgInp" name="fileToUpload" hidden>
 					</label>&nbsp;&nbsp;
-					<label class="btn btn-danger">
-    					<i class="fas fa-times-circle"></i>&nbsp; Remove Event Poster<input type="file" hidden>
-					</label>
-         		</div>
+			    </div>
+
+
+             	<script>
+
+             		function readURL(input) {
+					  if (input.files && input.files[0]) {
+					    var reader = new FileReader();
+					    
+					    reader.onload = function(e) {
+					      $('#selectedImage').attr('src', e.target.result);
+					    }
+					    
+					    reader.readAsDataURL(input.files[0]); // convert to base64 string
+					  }
+					}
+
+					$("#imgInp").change(function() {
+					  readURL(this);
+					});
+
+             	</script>
+
 
                 <p>&nbsp;</p>
                 <div class="form-group">
@@ -352,7 +563,7 @@ $con = getConn();
 
                 </div>
  -->
-                <input type="submit" class="btn-primary btn-user btn-block" name="eventSubmit" value="Publish Event">
+                <input type="submit" class="btn-primary btn-user btn-block" name="eventSubmit" value="Update Event Details Event">
               
               </form>
 
@@ -410,6 +621,9 @@ $con = getConn();
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
 
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>

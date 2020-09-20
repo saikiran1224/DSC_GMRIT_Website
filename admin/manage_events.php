@@ -262,7 +262,6 @@ $con = getConn();
                       <th>Event Photo</th>
                       <th>Event Name</th>
                       <th>Date Time</th>
-                      <th>Speaker(s)</th>
                       <th>Venue</th>
                       <th>Operations</th>
                     </tr>
@@ -272,7 +271,6 @@ $con = getConn();
                       <th>Event Photo</th>
                       <th>Event Name</th>
                       <th>Date Time</th>
-                      <th>Speaker(s)</th>
                       <th>Venue</th>
                       <th>Operations</th>
                     </tr>
@@ -294,7 +292,6 @@ $con = getConn();
                             echo "<td align='center'><img src='uploads/".$row['event_logo']."' width='130px' height='80px' alt='eventImage'></img></td>";
                             echo "<td>".$row['event_name']."</td>";
                             echo "<td>".$row['date']." ".$row['time']."</td>";
-                            echo "<td>".$row['event_speaker']."</td>";
                             echo "<td>".$row['organizing_mode']."</td>";
                             echo "<td>"; 
                             ?>
@@ -320,7 +317,7 @@ $con = getConn();
 
                                    $("a.red").click(function(){
                                     swal({
-                                      title: 'Are you Sure you want to Event Status ?',
+                                      title: 'Are you Sure you want to change Event Status ?',
                                       text: '',
                                       icon: 'warning',
                                       buttons: true,
