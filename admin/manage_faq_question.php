@@ -30,6 +30,15 @@ $con = getConn();
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+   <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+          integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+          crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+
 </head>
 
 <body id="page-top">
@@ -254,6 +263,7 @@ $con = getConn();
                       <th>Date Submitted</th>
                       <th>Question</th>
                       <th>Answer</th>
+                      <th>Operation</th>
                     
                     </tr>
                   </thead>
@@ -262,6 +272,7 @@ $con = getConn();
                       <th>Date Submitted</th>
                       <th>Question</th>
                       <th>Answer</th>
+                      <th>Operation</th>
                 
                     </tr>
                   </tfoot>
@@ -281,8 +292,63 @@ $con = getConn();
                             echo "<tr>";
                             echo "<td>".$row['publish_date']."</td>";
                             echo "<td>".$row['question']."</td>";
-                            echo "<td>".$row['answer']."</td>";
-                            echo "</tr>";
+                            echo "<td>".$row['answer']."</td>"; 
+                            echo "<td>"; ?>
+
+                             <!-- Delete Button -->
+                      <a href="#" class="btn btn-danger a-btn-slide-text red" name="Delete" data-id="<?php echo $row['faq_id']; ?>">
+                       <span  aria-hidden="true"><i class="fas fa-trash-alt"></i> Delete</span>
+                      </a>
+
+                        <script>
+                          $("a.red").click(function(){
+                            //("Hello " + this.id);
+                            swal({
+                              title: 'Are you sure to delete Question ?',
+                              text: 'You will not be able to recover the FAQ again!',
+                              icon: 'warning',
+                              buttons: true,
+                              dangerMode: true,
+                            })
+                            .then((willDelete) => {
+                              if (willDelete) { 
+                                //swal(this.id);
+                                var el = this;
+                                var deleteid = $(this).data('id');
+                                //swal(deleteid);
+                                $.ajax({
+                                 url: 'remove_faq.php',
+                                 type: 'POST',
+                                 data: { id: deleteid },
+                                 success: function(response){
+                                   // Remove row from HTML Table
+                                   $(el).closest('tr').css('background','tomato');
+                                   $(el).closest('tr').fadeOut(800,function(){
+                                      $(this).remove();
+                                   });
+                                      
+                                 }
+                                });
+
+                              } else {
+                                //swal('Restaurant is safe!');
+
+                              }
+                            });
+
+                            
+                          });
+
+                          </script>
+
+
+
+
+
+<?php   
+
+echo "</td>";
+echo "</tr>";
                           }
                         }
                       ?>
@@ -347,6 +413,9 @@ $con = getConn();
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
+   <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+
+
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
 
@@ -356,6 +425,9 @@ $con = getConn();
 
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
+
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
   <script>
         
