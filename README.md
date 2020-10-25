@@ -15,4 +15,5 @@ This is a Website developed for **DSC GMRIT**. It is a Dynamic Website backed by
 - PHP 7.2
 - MySQL
 
-<center>Copyright &copy; DSC GMRIT 2020</center>
+---
+<p align="center"><b>Copyright &copy; DSC GMRIT 2020</b></p>
